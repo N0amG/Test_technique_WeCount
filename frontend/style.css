@@ -76,11 +76,11 @@ body {
 
 #player-form {
   display: flex;
+  height: calc(100% - 50px);
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   row-gap: var(--space-lg);
-  height: 95%;
 }
 
 /* --- En-tête --- */
@@ -108,6 +108,7 @@ body {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
+  min-width: 375px;
   margin-bottom: var(--space-lg);
   box-shadow: var(--shadow-sm);
 }
@@ -353,6 +354,7 @@ input::placeholder {
   margin-top: var(--space-sm);
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  white-space: nowrap;
 }
 
 .elo-stats span {
