@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Simulateur de match de tennis — Générez des points aléatoires et calculez le score en temps réel." />
+  <title>Simulateur de Match de Tennis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- ===== En-tête ===== -->
+    <header class="app-header">
+      <h1>Simulateur de Match de Tennis</h1>
+      <p>Configurez les joueurs, générez les points et simulez le match point par point.</p>
+    </header>
+
+    <!-- ===== Grille : formulaire + points côte à côte ===== -->
+    <div class="top-grid">
+
+      <!-- ===== Formulaire des joueurs ===== -->
+      <section class="card" id="section-form">
+        <h2 class="card-title">Configuration des joueurs</h2>
+        <form id="player-form">
+          <div class="form-grid">
+
+            <!-- Joueur 1 -->
+            <fieldset class="player-fieldset">
+              <legend>Joueur 1</legend>
+              <label for="input-name-j1">Nom</label>
+              <input type="text" id="input-name-j1" name="nameJ1" placeholder="Ex : Thomas" required maxlength="30" />
+              <label for="input-level-j1">Niveau (1 à 10)</label>
+              <input type="number" id="input-level-j1" name="levelJ1" min="1" max="10" value="5" required />
+            </fieldset>
+
+            <!-- Joueur 2 -->
+            <fieldset class="player-fieldset">
+              <legend>Joueur 2</legend>
+              <label for="input-name-j2">Nom</label>
+              <input type="text" id="input-name-j2" name="nameJ2" placeholder="Ex : Paul" required maxlength="30" />
+              <label for="input-level-j2">Niveau (1 à 10)</label>
+              <input type="number" id="input-level-j2" name="levelJ2" min="1" max="10" value="5" required />
+            </fieldset>
+
+          </div>
+          <!-- Affichage des probabilités Elo -->
+          <div class="elo-stats hidden" id="elo-stats">
+            Probabilité : <span id="elo-prob-j1">—</span> vs <span id="elo-prob-j2">—</span>
+          </div>
+
+          <!-- Bouton de génération -->
+          <button type="submit" class="btn btn-primary btn-generate" id="btn-generate">
+            Générer 150 points aléatoires
+          </button>
+
+          <!-- Erreurs de validation -->
+          <div class="error-message hidden" id="form-error"></div>
+        </form>
+
+      </section>
+
+      <!-- ===== Liste des points générés ===== -->
+      <section class="card hidden" id="section-points">
+        <h2 class="card-title">Points générés (<span id="points-count">0</span> points)</h2>
+        <div class="points-list" id="points-list">
+          <!-- Les points seront injectés ici dynamiquement -->
+        </div>
+
+        <!-- Bouton d'envoi au backend -->
+        <button class="btn btn-send" id="btn-send" type="button">
+          Calculer le score
+        </button>
+      </section>
+
+    </div>
+
+    <!-- ===== Résultat du match (pleine largeur en dessous) ===== -->
+    <section class="card hidden" id="section-result">
+      <h2 class="card-title">Résultat du match</h2>
+
+      <!-- Message de statut -->
+      <div class="status-message" id="status-message"></div>
+
+      <!-- Tableau des scores -->
+      <div class="score-table-container">
+        <table class="score-table" id="score-table">
+          <thead id="score-thead">
+            <!-- En-tête dynamique -->
+          </thead>
+          <tbody id="score-tbody">
+            <!-- Lignes dynamiques -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
