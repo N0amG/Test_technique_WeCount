@@ -288,8 +288,6 @@ async function sendPointsToApi() {
     // Afficher le tableau des scores
     renderScoreTable(data.display);
 
-    // Scroll fluide vers la section résultat pour afficher directement le score
-    sectionResult.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (error) {
     showError("Erreur lors de l'appel API : " + error.message);
     console.error("Erreur API :", error);
