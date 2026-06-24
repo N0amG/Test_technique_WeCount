@@ -284,7 +284,7 @@ async function sendPointsToApi() {
 
     // Sauvegarder le nouvel état du match côté frontend
     currentMatchState = data.matchState;
-
+    console.log(currentMatchState);
     // Afficher le tableau des scores
     renderScoreTable(data.display);
 
@@ -308,7 +308,7 @@ async function sendPointsToApi() {
  * @returns {string}
  */
 function escapeHtml(text) {
-  var div = document.createElement("div");
+  const div = document.createElement("div");
   div.appendChild(document.createTextNode(text));
   return div.innerHTML;
 }
@@ -324,7 +324,7 @@ playerForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Valider le formulaire
-  var formData = validateForm();
+  const formData = validateForm();
   if (formData === null) return;
 
   // Sauvegarder les joueurs
@@ -332,8 +332,8 @@ playerForm.addEventListener("submit", function (event) {
   player2 = { name: formData.nameJ2, level: formData.levelJ2 };
 
   // Calculer et afficher les probabilités Elo
-  var probJ1 = calculateEloProbability(formData.levelJ1, formData.levelJ2);
-  var probJ2 = 1 - probJ1;
+  const probJ1 = calculateEloProbability(formData.levelJ1, formData.levelJ2);
+  const probJ2 = 1 - probJ1;
   eloProbJ1.textContent =
     escapeHtml(formData.nameJ1) + " " + (probJ1 * 100).toFixed(1) + "%";
   eloProbJ2.textContent =

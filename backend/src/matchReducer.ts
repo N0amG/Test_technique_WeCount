@@ -164,7 +164,7 @@ function matchReducer(state: MatchState, action: PointAction): MatchState {
   if (state.winner !== null) {
     return state;
   }
-
+  // On déstructure l'objet pour renommer la propriété 'winner' en 'pointWinner'
   const { winner: pointWinner } = action;
 
   // --- Étape 1 : Ajouter le point au jeu en cours ---
@@ -371,8 +371,8 @@ export function buildMatchDisplay(
     state.winner === "J1"
       ? player1.name
       : state.winner === "J2"
-      ? player2.name
-      : null;
+        ? player2.name
+        : null;
 
   // Construire le message de statut
   let statusMessage: string;
